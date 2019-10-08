@@ -1,0 +1,74 @@
+<html>
+<head>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+<div id = "container">
+        <h1>Acme Pixels</h1>
+
+    <div class='wrap'>
+        <div id = 'boxController'>
+            <h1>Controls</h1>
+            <div id ="controller">
+                <button class="add-row" onclick="">Add A Row</button>
+                <button class="remove-row" onclick=''>Remove A Row</button>
+                <button class="add-column" onclick=''>Add A Column</button>
+                <button class="remove-column" onclick=''>Remove A Column</button>
+                <div class="color-container" onclick=''></div>
+            </div>
+        </div>
+        <div id = 'grid-box'>
+            <h1>Canvas</h1>
+            <div id = "grid-container"></div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+<script>
+let rowNum = 1
+let columnNum = 1
+let grid = document.querySelector('#grid-container')
+let addRow = document.querySelector('.add-row')
+let addColumn = document.querySelector('.add-column')
+
+addRow.addEventListener( 'click', ev =>{
+
+ev.stopPropagation()
+rowNum = 0
+rowNum += 1
+console.log(rowNum)
+createGrid(rowNum,columnNum)
+})
+
+addColumn.addEventListener( 'click', ev =>{
+
+ev.stopPropagation()
+columnNum += 0
+columnNum += 1
+console.log(columnNum)
+createGrid(rowNum,columnNum)
+})
+
+function createGrid(row,column){
+    for ( let i = 0; i < row; i++){
+        let rowDiv = document.createElement('DIV')
+        rowDiv.classList.add('row-style')
+        for(let j= 0; j < column; j++){
+            let columnDiv = document.createElement('BUTTON')
+            columnDiv.classList.add('column-style')
+            rowDiv.append(columnDiv)
+        }
+        grid.append(rowDiv)
+    }
+
+}
+createGrid(rowNum,columnNum)
+
+</script>
+
+
+</html>
